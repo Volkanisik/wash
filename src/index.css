@@ -60,6 +60,19 @@
   section {
     @apply py-16 px-4 md:py-24 md:px-8;
   }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-blue/40 rounded-full hover:bg-blue/70 transition-colors duration-300;
+  }
 }
 
 @layer components {
@@ -88,7 +101,7 @@
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300;
+    @apply bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300;
   }
 
   .animate-on-scroll {
@@ -97,6 +110,20 @@
 
   .animate-active {
     @apply animate-fade-in;
+  }
+  
+  /* Neumorphic UI elements */
+  .neu-shadow {
+    @apply shadow-[5px_5px_15px_#d1d9e6,-5px_-5px_15px_#ffffff];
+  }
+  
+  .neu-shadow-inset {
+    @apply shadow-[inset_5px_5px_10px_#d1d9e6,inset_-5px_-5px_10px_#ffffff];
+  }
+  
+  /* Glassmorphism */
+  .glass {
+    @apply backdrop-blur-lg bg-white/70 border border-white/20;
   }
 }
 
@@ -107,10 +134,60 @@
 
 .foam-bubbles::before {
   content: '';
-  @apply absolute w-6 h-6 bg-blue-100 rounded-full -top-3 -left-3 animate-foam opacity-70;
+  @apply absolute w-6 h-6 bg-blue-100 rounded-full -top-3 -left-3 animate-foam opacity-70 z-10;
 }
 
 .foam-bubbles::after {
   content: '';
-  @apply absolute w-4 h-4 bg-blue-50 rounded-full -top-1 left-2 animate-foam opacity-50 delay-200;
+  @apply absolute w-4 h-4 bg-blue-50 rounded-full -top-1 left-2 animate-foam opacity-50 delay-200 z-10;
+}
+
+/* Expanded keyframes for more animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Add additional animation classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Micro-interaction for buttons and links */
+.hover-lift {
+  @apply transition-all duration-300;
+}
+
+.hover-lift:hover {
+  @apply -translate-y-1 shadow-lg;
+}
+
+/* Progressive blur */
+.blur-gradient-overlay {
+  @apply relative overflow-hidden;
+}
+
+.blur-gradient-overlay::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent pointer-events-none;
 }
