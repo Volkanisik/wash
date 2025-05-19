@@ -97,7 +97,6 @@ const Services = () => {
                   "transform hover:-translate-y-1",
                   activeCard === index ? "ring-2 ring-blue scale-[1.02]" : ""
                 )}
-                ref={el => elementsRef.current[index + 1] = el}
                 style={{ animationDelay: `${index * 200}ms` }}
                 onMouseEnter={() => setActiveCard(index)}
                 onMouseLeave={() => setActiveCard(-1)}

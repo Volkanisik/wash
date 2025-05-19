@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
 interface FoamBubblesProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -114,15 +115,17 @@ interface GlassPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-export const GlassPanel = ({
+// Update GlassPanel to use forwardRef
+export const GlassPanel = forwardRef<HTMLDivElement, GlassPanelProps>(({
   opacity = 0.7,
   blur = '8px',
   className,
   children,
   ...props
-}: GlassPanelProps) => {
+}, ref) => {
   return (
     <div
+      ref={ref}
       className={cn(
         'rounded-xl border border-white/20',
         className
@@ -136,7 +139,10 @@ export const GlassPanel = ({
       {children}
     </div>
   );
-};
+});
+
+// Add display name for debugging purposes
+GlassPanel.displayName = 'GlassPanel';
 
 export default {
   FoamBubbles,
