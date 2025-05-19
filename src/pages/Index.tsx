@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -11,7 +10,7 @@ import { FloatingElement, FoamBubbles, GlassPanel, ProgressiveBlur } from "@/com
 import { ArrowUp } from "lucide-react";
 
 const Index = () => {
-  const scrollButtonRef = useRef<HTMLButtonElement>(null);
+  const scrollButtonRef = useRef<HTMLDivElement>(null);
   const [visibleSection, setVisibleSection] = useState('');
 
   // Initialize intersection observer for animations
