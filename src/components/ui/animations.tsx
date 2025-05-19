@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -68,12 +67,12 @@ export const FloatingElement = ({
       }}
       {...props}
     >
-      <style jsx>{`
-        @keyframes float {
+      <style>
+        {`@keyframes float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-${distance}); }
-        }
-      `}</style>
+        }`}
+      </style>
       {children}
     </div>
   );
