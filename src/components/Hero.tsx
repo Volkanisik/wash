@@ -2,10 +2,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronDown } from 'lucide-react';
+import { GlassPanel } from '@/components/ui/animations';
 
 const Hero = () => {
   const elementsRef = useRef<(HTMLElement | null)[]>([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(true);
+  const [imageError, setImageError] = useState(false);
   
   useEffect(() => {
     setIsVisible(true);
@@ -30,9 +33,19 @@ const Hero = () => {
     };
   }, []);
 
-  // Images that work reliably
-  const heroImage = "https://images.unsplash.com/photo-1605231100267-5a61d8503a4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80";
+  // More reliable image URLs for car wash service
+  const heroImage = "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80";
+  const fallbackImage = "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80";
   
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+  
+  const handleImageError = () => {
+    setImageError(true);
+    console.log("Error loading hero image, using fallback");
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="container-custom grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -117,41 +130,45 @@ const Hero = () => {
             ref={el => elementsRef.current[4] = el}
           >
             <img 
-              src={heroImage}
-              alt="Professional car washing"
+              src={imageError ? fallbackImage : heroImage}
+              alt="Professional car washing service in action"
               className="w-full h-auto rounded-2xl"
+              onLoad={handleImageLoad}
+              onError={handleImageError}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
           </div>
           
-          <div 
+          <GlassPanel
             className={cn(
-              "absolute -bottom-5 -left-5 md:bottom-8 md:left-8",
-              "bg-white/80 backdrop-blur-md p-4 rounded-lg shadow-xl max-w-[200px]",
+              "absolute -bottom-5 -left-5 md:bottom-8 md:left-8 p-4 max-w-[200px] z-10",
               "opacity-0 transform translate-y-8",
               isVisible && "animate-fade-in opacity-100 translate-y-0 transition-all duration-1000 delay-800"
             )}
             ref={el => elementsRef.current[5] = el}
+            glowColor="rgba(74, 222, 128, 0.3)"
+            glowIntensity="medium"
           >
             <div className="text-green font-bold text-lg">15 min</div>
             <p className="text-sm text-gray-600">Average waiting time</p>
-          </div>
+          </GlassPanel>
           
-          <div 
+          <GlassPanel 
             className={cn(
-              "absolute -top-5 -right-5 md:top-8 md:right-8",
-              "bg-white/80 backdrop-blur-md p-4 rounded-lg shadow-xl",
+              "absolute -top-5 -right-5 md:top-8 md:right-8 p-4 z-10",
               "opacity-0 transform translate-y-8",
               isVisible && "animate-fade-in opacity-100 translate-y-0 transition-all duration-1000 delay-1000"
             )}
             ref={el => elementsRef.current[6] = el}
+            glowColor="rgba(59, 130, 246, 0.3)"
+            glowIntensity="medium"
           >
             <div className="flex items-center gap-2">
               <div className="text-blue font-bold text-lg">Eco-Friendly</div>
               <div className="w-4 h-4 rounded-full bg-green"></div>
             </div>
             <p className="text-sm text-gray-600">Water-saving technology</p>
-          </div>
+          </GlassPanel>
         </div>
       </div>
       

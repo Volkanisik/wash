@@ -8,19 +8,22 @@ const services = [
     title: "Express Wash",
     description: "Quick exterior wash and hand-dry for a sparkling clean in just 20 minutes.",
     icon: "🚿",
-    features: ["Exterior Wash", "Wheel Cleaning", "Hand Drying", "Windows Cleaning"]
+    features: ["Exterior Wash", "Wheel Cleaning", "Hand Drying", "Windows Cleaning"],
+    glowColor: "rgba(59, 130, 246, 0.3)" // blue glow
   },
   {
     title: "Premium Wash",
     description: "Complete interior and exterior cleaning for a showroom-quality finish.",
     icon: "✨",
-    features: ["Express Wash +", "Interior Vacuuming", "Dashboard Cleaning", "Door Jamb Cleaning"]
+    features: ["Express Wash +", "Interior Vacuuming", "Dashboard Cleaning", "Door Jamb Cleaning"],
+    glowColor: "rgba(74, 222, 128, 0.3)" // green glow
   },
   {
     title: "Deluxe Detail",
     description: "Our comprehensive package with waxing and premium interior treatment.",
     icon: "🌟",
-    features: ["Premium Wash +", "Hand Waxing", "Leather Treatment", "Interior Detailing"]
+    features: ["Premium Wash +", "Hand Waxing", "Leather Treatment", "Interior Detailing"],
+    glowColor: "rgba(139, 92, 246, 0.3)" // purple glow
   }
 ];
 
@@ -91,9 +94,11 @@ const Services = () => {
               <GlassPanel
                 opacity={0.6}
                 blur="8px"
+                glowColor={service.glowColor}
+                glowIntensity={activeCard === index ? "strong" : "light"}
                 className={cn(
-                  "h-full p-6 transition-all duration-300 animate-on-scroll cursor-pointer",
-                  "border border-white/30 shadow-lg hover:shadow-xl",
+                  "h-full p-6 transition-all duration-500 animate-on-scroll cursor-pointer z-10",
+                  "border border-white/30 shadow-lg",
                   "transform hover:-translate-y-1",
                   activeCard === index ? "ring-2 ring-blue scale-[1.02]" : ""
                 )}

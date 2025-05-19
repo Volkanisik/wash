@@ -7,7 +7,7 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { FloatingElement, FoamBubbles, ProgressiveBlur } from "@/components/ui/animations";
+import { FloatingElement, FoamBubbles, GlassPanel, ProgressiveBlur } from "@/components/ui/animations";
 import { ArrowUp } from "lucide-react";
 
 const Index = () => {
@@ -98,9 +98,9 @@ const Index = () => {
           className="absolute top-0 left-0 w-full h-full"
           style={{ transform: `translateY(${offset * 0.2}px)` }}
         >
-          <div className="absolute top-[15%] left-[10%] w-64 h-64 rounded-full bg-blue-100/20 blur-3xl"></div>
-          <div className="absolute top-[35%] right-[5%] w-96 h-96 rounded-full bg-green-100/20 blur-3xl"></div>
-          <div className="absolute bottom-[10%] left-[20%] w-80 h-80 rounded-full bg-blue-200/10 blur-3xl"></div>
+          <div className="absolute top-[15%] left-[10%] w-64 h-64 rounded-full bg-blue-100/30 blur-3xl"></div>
+          <div className="absolute top-[35%] right-[5%] w-96 h-96 rounded-full bg-green-100/30 blur-3xl"></div>
+          <div className="absolute bottom-[10%] left-[20%] w-80 h-80 rounded-full bg-blue-200/20 blur-3xl"></div>
         </div>
         
         {/* Small floating elements */}
@@ -145,14 +145,21 @@ const Index = () => {
       </div>
 
       {/* Scroll to top button */}
-      <button
+      <GlassPanel
+        className="fixed bottom-8 right-8 w-12 h-12 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 hover:scale-110 z-50"
+        opacity={0.5}
+        glowColor="rgba(59, 130, 246, 0.4)"
+        glowIntensity="medium"
         ref={scrollButtonRef}
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 backdrop-blur-md bg-blue/60 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 hover:bg-blue z-50 neu-shadow"
-        aria-label="Scroll to top"
       >
-        <ArrowUp className="h-5 w-5" />
-      </button>
+        <button
+          className="w-full h-full flex items-center justify-center"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="h-5 w-5 text-blue-dark" />
+        </button>
+      </GlassPanel>
     </div>
   );
 };

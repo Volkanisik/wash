@@ -1,4 +1,3 @@
-
 import React, { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -112,17 +111,28 @@ export const ProgressiveBlur = ({
 interface GlassPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   opacity?: number;
   blur?: string;
+  glowColor?: string;
+  glowIntensity?: 'light' | 'medium' | 'strong';
   children: React.ReactNode;
 }
 
-// Update GlassPanel to use forwardRef
+// Enhanced GlassPanel with glowing effect support
 export const GlassPanel = forwardRef<HTMLDivElement, GlassPanelProps>(({
   opacity = 0.7,
   blur = '8px',
+  glowColor = 'rgba(255, 255, 255, 0.4)',
+  glowIntensity = 'medium',
   className,
   children,
   ...props
 }, ref) => {
+  // Define glow intensity levels
+  const glowStyles = {
+    light: '0 0 15px 2px',
+    medium: '0 0 25px 5px',
+    strong: '0 0 35px 10px'
+  };
+
   return (
     <div
       ref={ref}
@@ -133,6 +143,8 @@ export const GlassPanel = forwardRef<HTMLDivElement, GlassPanelProps>(({
       style={{
         backdropFilter: `blur(${blur})`,
         backgroundColor: `rgba(255, 255, 255, ${opacity})`,
+        boxShadow: `${glowStyles[glowIntensity]} ${glowColor}`,
+        transition: 'all 0.3s ease'
       }}
       {...props}
     >
@@ -144,9 +156,49 @@ export const GlassPanel = forwardRef<HTMLDivElement, GlassPanelProps>(({
 // Add display name for debugging purposes
 GlassPanel.displayName = 'GlassPanel';
 
+// New component for glass text background
+interface GlassTextProps extends React.HTMLAttributes<HTMLDivElement> {
+  opacity?: number;
+  blur?: string;
+  children: React.ReactNode;
+}
+
+export const GlassText = forwardRef<HTMLDivElement, GlassTextProps>(({
+  opacity = 0.3,
+  blur = '5px',
+  className,
+  children,
+  ...props
+}, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        'relative px-4 py-2 rounded-lg',
+        className
+      )}
+    >
+      <div 
+        className="absolute inset-0 rounded-lg z-0"
+        style={{
+          backdropFilter: `blur(${blur})`,
+          backgroundColor: `rgba(255, 255, 255, ${opacity})`,
+          border: '1px solid rgba(255, 255, 255, 0.1)'
+        }}
+      />
+      <div className="relative z-10">
+        {children}
+      </div>
+    </div>
+  );
+});
+
+GlassText.displayName = 'GlassText';
+
 export default {
   FoamBubbles,
   FloatingElement,
   ProgressiveBlur,
   GlassPanel,
+  GlassText
 };
