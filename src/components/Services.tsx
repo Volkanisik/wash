@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { FloatingElement, GlassPanel } from '@/components/ui/animations';
 
 const services = [
   {
@@ -49,8 +50,22 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" className="bg-gray-50 py-24">
-      <div className="container-custom">
+    <section id="services" className="relative bg-gradient-to-br from-blue-50/80 to-gray-50/80 py-24 overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/10 to-blue-50/10 backdrop-blur-[2px]"></div>
+      
+      {/* Decorative elements */}
+      <div className="absolute top-20 left-10 opacity-50">
+        <FloatingElement duration={8} distance="15px">
+          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-200/30 to-blue-100/10 backdrop-blur-sm"></div>
+        </FloatingElement>
+      </div>
+      <div className="absolute bottom-20 right-10 opacity-50">
+        <FloatingElement duration={10} distance="20px" delay={2}>
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-green-200/20 to-blue-100/10 backdrop-blur-sm"></div>
+        </FloatingElement>
+      </div>
+
+      <div className="container-custom relative z-10">
         <div 
           className="text-center mb-16 animate-on-scroll"
           ref={el => elementsRef.current[0] = el}
@@ -66,32 +81,41 @@ const Services = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div 
-              key={service.title}
-              className={cn(
-                "rounded-2xl p-6 transition-all duration-500 animate-on-scroll cursor-pointer",
-                "bg-white shadow-[0_0_15px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)]",
-                "transform hover:-translate-y-2",
-                activeCard === index ? "ring-2 ring-blue" : ""
-              )}
-              ref={el => elementsRef.current[index + 1] = el}
-              style={{ animationDelay: `${index * 200}ms` }}
-              onMouseEnter={() => setActiveCard(index)}
-              onMouseLeave={() => setActiveCard(-1)}
+            <FloatingElement 
+              key={service.title} 
+              duration={6} 
+              delay={index * 0.5} 
+              distance="8px"
+              className="h-full"
             >
-              <div className="mb-6 text-5xl transform transition-transform duration-500 hover:scale-110">{service.icon}</div>
-              <h3 className="text-xl font-bold mb-3 text-blue-dark">{service.title}</h3>
-              <p className="text-gray-600 mb-6">{service.description}</p>
-              
-              <ul className="space-y-3">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-green to-green-dark mr-3"></div>
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <GlassPanel
+                opacity={0.6}
+                blur="8px"
+                className={cn(
+                  "h-full p-6 transition-all duration-300 animate-on-scroll cursor-pointer",
+                  "border border-white/30 shadow-lg hover:shadow-xl",
+                  "transform hover:-translate-y-1",
+                  activeCard === index ? "ring-2 ring-blue scale-[1.02]" : ""
+                )}
+                ref={el => elementsRef.current[index + 1] = el}
+                style={{ animationDelay: `${index * 200}ms` }}
+                onMouseEnter={() => setActiveCard(index)}
+                onMouseLeave={() => setActiveCard(-1)}
+              >
+                <div className="mb-6 text-5xl transform transition-transform duration-500 hover:scale-110">{service.icon}</div>
+                <h3 className="text-xl font-bold mb-3 text-blue-dark">{service.title}</h3>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                
+                <ul className="space-y-3">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center">
+                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-green to-green-dark mr-3"></div>
+                      <span className="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </GlassPanel>
+            </FloatingElement>
           ))}
         </div>
         
@@ -101,7 +125,7 @@ const Services = () => {
         >
           <a 
             href="#pricing" 
-            className="relative overflow-hidden rounded-md px-8 py-3 text-sm font-semibold text-white shadow-sm bg-blue transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 text-center group inline-flex items-center"
+            className="relative overflow-hidden rounded-md px-8 py-3 text-sm font-semibold text-white shadow-sm bg-blue/80 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:bg-blue active:scale-95 text-center group inline-flex items-center"
           >
             <span className="relative z-10">View Pricing</span>
             <span className="absolute inset-0 bg-blue-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
