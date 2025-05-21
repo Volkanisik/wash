@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -154,7 +155,7 @@ const Index = () => {
       >
         <button
           className="w-full h-full flex items-center justify-center"
-          aria-label="Scroll to top"
+          aria-label="Rul til toppen"
         >
           <ArrowUp className="h-5 w-5 text-blue-dark" />
         </button>

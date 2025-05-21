@@ -5,24 +5,24 @@ import { FloatingElement, GlassPanel } from '@/components/ui/animations';
 
 const services = [
   {
-    title: "Express Wash",
-    description: "Quick exterior wash and hand-dry for a sparkling clean in just 20 minutes.",
+    title: "Ekspres Vask",
+    description: "Hurtig udvendig vask og håndtørring for en skinnende ren bil på kun 20 minutter.",
     icon: "🚿",
-    features: ["Exterior Wash", "Wheel Cleaning", "Hand Drying", "Windows Cleaning"],
+    features: ["Udvendig Vask", "Hjul Rengøring", "Håndtørring", "Vinduespudsning"],
     glowColor: "rgba(59, 130, 246, 0.3)" // blue glow
   },
   {
-    title: "Premium Wash",
-    description: "Complete interior and exterior cleaning for a showroom-quality finish.",
+    title: "Premium Vask",
+    description: "Komplet indvendig og udvendig rengøring for et udstillingskvalitets-finish.",
     icon: "✨",
-    features: ["Express Wash +", "Interior Vacuuming", "Dashboard Cleaning", "Door Jamb Cleaning"],
+    features: ["Ekspres Vask +", "Indvendig Støvsugning", "Instrumentbræt Rengøring", "Dørkarme Rengøring"],
     glowColor: "rgba(74, 222, 128, 0.3)" // green glow
   },
   {
-    title: "Deluxe Detail",
-    description: "Our comprehensive package with waxing and premium interior treatment.",
+    title: "Deluxe Detalje",
+    description: "Vores omfattende pakke med voksbehandling og premium indvendig behandling.",
     icon: "🌟",
-    features: ["Premium Wash +", "Hand Waxing", "Leather Treatment", "Interior Detailing"],
+    features: ["Premium Vask +", "Håndvoksning", "Læderbehandling", "Indvendig Detaljering"],
     glowColor: "rgba(139, 92, 246, 0.3)" // purple glow
   }
 ];
@@ -74,11 +74,11 @@ const Services = () => {
           ref={el => elementsRef.current[0] = el}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
-            <span className="bg-gradient-to-r from-blue to-blue-dark text-transparent bg-clip-text">Our Services</span>
+            <span className="bg-gradient-to-r from-blue to-blue-dark text-transparent bg-clip-text">Vores Services</span>
             <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue to-blue-dark rounded-full transform scale-x-50 origin-center"></span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
-            We offer a range of professional car washing services that come to your location.
+            Vi tilbyder en række professionelle bilvasktjenester, der kommer til din lokation.
           </p>
         </div>
         
@@ -131,7 +131,7 @@ const Services = () => {
             href="#pricing" 
             className="relative overflow-hidden rounded-md px-8 py-3 text-sm font-semibold text-white shadow-sm bg-blue/80 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:bg-blue active:scale-95 text-center group inline-flex items-center"
           >
-            <span className="relative z-10">View Pricing</span>
+            <span className="relative z-10">Se Priser</span>
             <span className="absolute inset-0 bg-blue-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
           </a>
         </div>

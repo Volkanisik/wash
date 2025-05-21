@@ -45,7 +45,7 @@ const Navbar = () => {
               href="#contact" 
               className="relative overflow-hidden rounded-md px-6 py-2.5 text-sm font-semibold text-white shadow-sm bg-blue/80 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 group"
             >
-              <span className="relative z-10">Book Now</span>
+              <span className="relative z-10">Book Nu</span>
               <span className="absolute inset-0 bg-blue-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
             </a>
           </div>

@@ -4,41 +4,41 @@ import { cn } from '@/lib/utils';
 
 const monthlyPlans = [
   {
-    name: "Basic",
-    price: 29,
+    name: "Indvendig behandling",
+    price: 399,
     features: [
-      "2 Express Washes per month",
-      "Exterior cleaning",
-      "Window cleaning",
-      "Same-day service",
-      "Mobile app access"
+      "2 Indvendige rengøringer pr. måned",
+      "Indvendig rengøring",
+      "Støvsugning",
+      "Samme-dags service",
+      "Mobilapp adgang"
     ],
     popular: false
   },
   {
-    name: "Standard",
-    price: 49,
+    name: "Fuld behandling",
+    price: 599,
     features: [
-      "2 Premium Washes per month",
-      "Interior & exterior cleaning",
-      "Tire dressing",
-      "Dashboard conditioning",
-      "Priority scheduling",
-      "Mobile app access"
+      "2 Komplette vask pr. måned",
+      "Ind- og udvendig rengøring",
+      "Dækpleje",
+      "Instrumentbræt pleje",
+      "Prioriteret planlægning",
+      "Mobilapp adgang"
     ],
     popular: true
   },
   {
-    name: "Premium",
-    price: 79,
+    name: "Udvendig behandling",
+    price: 299,
     features: [
-      "2 Deluxe Details per month",
-      "Complete interior & exterior",
-      "Hand waxing",
-      "Leather conditioning",
-      "VIP scheduling",
-      "Family plan options",
-      "Mobile app access"
+      "2 Udvendige vask pr. måned",
+      "Komplet udvendig rengøring",
+      "Håndvask",
+      "Voksbehandling",
+      "VIP planlægning",
+      "Familieplan muligheder",
+      "Mobilapp adgang"
     ],
     popular: false
   }
@@ -83,11 +83,11 @@ const Pricing = () => {
           ref={el => elementsRef.current[0] = el}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
-            <span className="bg-gradient-to-r from-blue to-blue-dark text-transparent bg-clip-text">Simple, Transparent Pricing</span>
+            <span className="bg-gradient-to-r from-blue to-blue-dark text-transparent bg-clip-text">Enkle, Gennemsigtige Priser</span>
             <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue to-blue-dark rounded-full transform scale-x-50 origin-center"></span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
-            Choose the plan that works best for you. All plans include our satisfaction guarantee.
+            Vælg den plan, der passer bedst til dig. Alle planer inkluderer vores tilfredshedsgaranti.
           </p>
         </div>
         
@@ -103,7 +103,7 @@ const Pricing = () => {
               )}
               onClick={() => setAnnual(false)}
             >
-              Monthly
+              Månedlig
             </button>
             <button
               className={cn(
@@ -112,7 +112,7 @@ const Pricing = () => {
               )}
               onClick={() => setAnnual(true)}
             >
-              Annual <span className="text-green text-xs ml-1">Save 15%</span>
+              Årlig <span className="text-green text-xs ml-1">Spar 15%</span>
             </button>
           </div>
         </div>
@@ -133,7 +133,7 @@ const Pricing = () => {
             >
               {plan.popular && (
                 <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue to-blue-dark text-white px-6 py-2 rounded-lg shadow-lg text-sm font-medium">
-                  Popular
+                  Populær
                 </div>
               )}
               
@@ -145,8 +145,8 @@ const Pricing = () => {
                   {plan.name}
                 </h3>
                 <div className="mb-6">
-                  <span className="text-5xl font-bold">${plan.price}</span>
-                  <span className="text-gray-500 ml-1">/{annual ? 'year' : 'month'}</span>
+                  <span className="text-5xl font-bold">{plan.price}</span>
+                  <span className="text-gray-500 ml-1">kr/{annual ? 'år' : 'måned'}</span>
                 </div>
                 
                 <ul className="space-y-4 mb-8">
@@ -173,7 +173,7 @@ const Pricing = () => {
                       : "bg-gray-100 text-gray-800 hover:bg-gray-200"
                   )}
                 >
-                  <span className="relative z-10">Get Started</span>
+                  <span className="relative z-10">Kom i Gang</span>
                   {plan.popular && (
                     <span className="absolute inset-0 bg-blue-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
                   )}

@@ -58,8 +58,8 @@ const Hero = () => {
             ref={el => elementsRef.current[0] = el}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-blue to-blue-light text-transparent bg-clip-text">Sparkling Clean</span> Cars, 
-              <br />Wherever You Are
+              <span className="bg-gradient-to-r from-blue to-blue-light text-transparent bg-clip-text">Skinnende Rene</span> Biler, 
+              <br />Hvor End Du Er
             </h1>
           </div>
           
@@ -71,7 +71,7 @@ const Hero = () => {
             ref={el => elementsRef.current[1] = el}
           >
             <p className="text-lg md:text-xl mb-8 text-gray-600 max-w-lg">
-              Experience the convenience of professional car washing services that come to your doorstep. Eco-friendly, efficient, and exceptional results.
+              Oplev bekvemmeligheden ved professionel bilvask, der kommer til din dør. Miljøvenlig, effektiv og med enestående resultater.
             </p>
           </div>
           
@@ -86,14 +86,14 @@ const Hero = () => {
               href="#pricing" 
               className="relative overflow-hidden rounded-md px-6 py-3 text-sm font-semibold text-white shadow-sm bg-blue transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 text-center group"
             >
-              <span className="relative z-10">View Plans & Pricing</span>
+              <span className="relative z-10">Se Planer & Priser</span>
               <span className="absolute inset-0 bg-blue-dark transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
             </a>
             <a 
               href="#services" 
               className="relative overflow-hidden rounded-md px-6 py-3 text-sm font-semibold border-2 border-blue text-blue hover:text-white transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 text-center group"
             >
-              <span className="relative z-10">Explore Services</span>
+              <span className="relative z-10">Udforsk Services</span>
               <span className="absolute inset-0 bg-blue transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100"></span>
             </a>
           </div>
@@ -116,7 +116,7 @@ const Hero = () => {
               ))}
             </div>
             <p className="text-gray-600">
-              <span className="font-semibold">4.9/5</span> from over 2,000 happy customers
+              <span className="font-semibold">4.9/5</span> fra over 2.000 tilfredse kunder
             </p>
           </div>
         </div>
@@ -131,7 +131,7 @@ const Hero = () => {
           >
             <img 
               src={imageError ? fallbackImage : heroImage}
-              alt="Professional car washing service in action"
+              alt="Professionel bilvask i aktion"
               className="w-full h-auto rounded-2xl"
               onLoad={handleImageLoad}
               onError={handleImageError}
@@ -150,7 +150,7 @@ const Hero = () => {
             glowIntensity="medium"
           >
             <div className="text-green font-bold text-lg">15 min</div>
-            <p className="text-sm text-gray-600">Average waiting time</p>
+            <p className="text-sm text-gray-600">Gennemsnitlig ventetid</p>
           </GlassPanel>
           
           <GlassPanel 
@@ -164,10 +164,10 @@ const Hero = () => {
             glowIntensity="medium"
           >
             <div className="flex items-center gap-2">
-              <div className="text-blue font-bold text-lg">Eco-Friendly</div>
+              <div className="text-blue font-bold text-lg">Miljøvenlig</div>
               <div className="w-4 h-4 rounded-full bg-green"></div>
             </div>
-            <p className="text-sm text-gray-600">Water-saving technology</p>
+            <p className="text-sm text-gray-600">Vandbesparende teknologi</p>
           </GlassPanel>
         </div>
       </div>

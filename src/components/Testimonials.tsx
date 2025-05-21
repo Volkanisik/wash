@@ -6,26 +6,26 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const testimonials = [
   {
     name: "Sarah Johnson",
-    role: "Tesla Model 3 Owner",
-    quote: "SparkleWash has completely changed how I maintain my car. Their team is professional, efficient, and the results are amazing. I love not having to drive to a car wash anymore!",
+    role: "Tesla Model 3 Ejer",
+    quote: "SparkleWash har fuldstændigt ændret måden, jeg vedligeholder min bil på. Deres team er professionelt, effektivt, og resultaterne er fantastiske. Jeg elsker ikke længere at skulle køre til en bilvask!",
     avatar: "https://randomuser.me/api/portraits/women/21.jpg"
   },
   {
     name: "Michael Chen",
-    role: "BMW X5 Owner",
-    quote: "I've tried multiple mobile car wash services, but SparkleWash stands out for their attention to detail. My car looks better than when I bought it, every single time.",
+    role: "BMW X5 Ejer",
+    quote: "Jeg har prøvet flere mobile bilvaskservices, men SparkleWash skiller sig ud ved deres fokus på detaljer. Min bil ser bedre ud end da jeg købte den, hver eneste gang.",
     avatar: "https://randomuser.me/api/portraits/men/32.jpg"
   },
   {
     name: "Emily Rodriguez",
-    role: "Audi Q7 Owner",
-    quote: "As a busy professional, time is precious. SparkleWash saves me hours every month while keeping my car in pristine condition. Their subscription plan is a no-brainer!",
+    role: "Audi Q7 Ejer",
+    quote: "Som travl professionel er tid værdifuld. SparkleWash sparer mig timer hver måned, mens de holder min bil i perfekt stand. Deres abonnementsplan er et oplagt valg!",
     avatar: "https://randomuser.me/api/portraits/women/44.jpg"
   },
   {
     name: "David Thompson",
-    role: "Ford F-150 Owner",
-    quote: "My truck takes a beating on job sites, but these guys make it look showroom-ready every time. The team is always on time and their eco-friendly approach is a huge plus.",
+    role: "Ford F-150 Ejer",
+    quote: "Min truck gennemgår meget slid på byggepladser, men disse fyre får den til at se udstillingsflot ud hver gang. Teamet er altid til tiden, og deres miljøvenlige tilgang er et kæmpe plus.",
     avatar: "https://randomuser.me/api/portraits/men/67.jpg"
   }
 ];
@@ -83,11 +83,11 @@ const Testimonials = () => {
           ref={el => elementsRef.current[0] = el}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
-            <span className="bg-gradient-to-r from-blue to-blue-dark text-transparent bg-clip-text">What Our Customers Say</span>
+            <span className="bg-gradient-to-r from-blue to-blue-dark text-transparent bg-clip-text">Hvad Vores Kunder Siger</span>
             <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue to-blue-dark rounded-full transform scale-x-50 origin-center"></span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
-            Don't just take our word for it. Here's what our happy customers have to say.
+            Tag ikke bare vores ord for det. Her er hvad vores tilfredse kunder har at sige.
           </p>
         </div>
         
@@ -138,7 +138,7 @@ const Testimonials = () => {
             <button 
               onClick={prevTestimonial}
               className="p-3 rounded-full bg-white shadow-md hover:bg-blue hover:text-white transition-colors duration-300"
-              aria-label="Previous testimonial"
+              aria-label="Forrige anbefaling"
             >
               <ChevronLeft size={20} />
             </button>
@@ -152,7 +152,7 @@ const Testimonials = () => {
                     "w-10 h-1 rounded-full transition-all duration-300",
                     index === activeIndex ? "bg-blue scale-y-150" : "bg-gray-300 hover:bg-gray-400"
                   )}
-                  aria-label={`View testimonial ${index + 1}`}
+                  aria-label={`Se anbefaling ${index + 1}`}
                 ></button>
               ))}
             </div>
@@ -160,7 +160,7 @@ const Testimonials = () => {
             <button 
               onClick={nextTestimonial}
               className="p-3 rounded-full bg-white shadow-md hover:bg-blue hover:text-white transition-colors duration-300"
-              aria-label="Next testimonial"
+              aria-label="Næste anbefaling"
             >
               <ChevronRight size={20} />
             </button>

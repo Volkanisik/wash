@@ -8,7 +8,7 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
-    service: 'Express Wash',
+    service: 'Ekspres Vask',
     message: '',
   });
   
@@ -62,9 +62,9 @@ const Contact = () => {
           className="text-center mb-12 animate-on-scroll"
           ref={el => elementsRef.current[0] = el}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">Book Your Wash</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">Book Din Vask</h2>
           <p className="text-lg mb-12 text-blue-100 max-w-2xl mx-auto">
-            Ready for a spotless car? Schedule your appointment and we'll come to you.
+            Klar til en pletfri bil? Planlæg din aftale, og vi kommer til dig.
           </p>
         </div>
         
@@ -83,16 +83,16 @@ const Contact = () => {
               {submitted ? (
                 <div className="bg-green-dark/20 p-8 rounded-xl border border-green-light/30 text-center">
                   <div className="mb-4 text-5xl">✅</div>
-                  <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
+                  <h3 className="text-2xl font-bold mb-2">Tak!</h3>
                   <p className="text-blue-100">
-                    We've received your request and will get back to you within 2 hours.
+                    Vi har modtaget din forespørgsel og vender tilbage til dig inden for 2 timer.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6 p-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block mb-2 text-sm font-medium text-blue-100">Name</label>
+                      <label htmlFor="name" className="block mb-2 text-sm font-medium text-blue-100">Navn</label>
                       <input
                         type="text"
                         id="name"
@@ -100,12 +100,12 @@ const Contact = () => {
                         value={formState.name}
                         onChange={handleChange}
                         className="w-full p-3 bg-blue-900/50 rounded-md border border-blue-700 text-white placeholder:text-blue-300"
-                        placeholder="Your name"
+                        placeholder="Dit navn"
                         required
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block mb-2 text-sm font-medium text-blue-100">Email</label>
+                      <label htmlFor="email" className="block mb-2 text-sm font-medium text-blue-100">E-mail</label>
                       <input
                         type="email"
                         id="email"
@@ -113,7 +113,7 @@ const Contact = () => {
                         value={formState.email}
                         onChange={handleChange}
                         className="w-full p-3 bg-blue-900/50 rounded-md border border-blue-700 text-white placeholder:text-blue-300"
-                        placeholder="Your email"
+                        placeholder="Din e-mail"
                         required
                       />
                     </div>
@@ -121,7 +121,7 @@ const Contact = () => {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="phone" className="block mb-2 text-sm font-medium text-blue-100">Phone</label>
+                      <label htmlFor="phone" className="block mb-2 text-sm font-medium text-blue-100">Telefon</label>
                       <input
                         type="tel"
                         id="phone"
@@ -129,7 +129,7 @@ const Contact = () => {
                         value={formState.phone}
                         onChange={handleChange}
                         className="w-full p-3 bg-blue-900/50 rounded-md border border-blue-700 text-white placeholder:text-blue-300"
-                        placeholder="Your phone number"
+                        placeholder="Dit telefonnummer"
                         required
                       />
                     </div>
@@ -143,15 +143,15 @@ const Contact = () => {
                         className="w-full p-3 bg-blue-900/50 rounded-md border border-blue-700 text-white"
                         required
                       >
-                        <option value="Express Wash">Express Wash</option>
-                        <option value="Premium Wash">Premium Wash</option>
-                        <option value="Deluxe Detail">Deluxe Detail</option>
+                        <option value="Ekspres Vask">Ekspres Vask</option>
+                        <option value="Premium Vask">Premium Vask</option>
+                        <option value="Deluxe Detalje">Deluxe Detalje</option>
                       </select>
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block mb-2 text-sm font-medium text-blue-100">Message</label>
+                    <label htmlFor="message" className="block mb-2 text-sm font-medium text-blue-100">Besked</label>
                     <textarea
                       id="message"
                       name="message"
@@ -159,12 +159,12 @@ const Contact = () => {
                       onChange={handleChange}
                       rows={4}
                       className="w-full p-3 bg-blue-900/50 rounded-md border border-blue-700 text-white placeholder:text-blue-300"
-                      placeholder="Tell us about your car and preferred time for service"
+                      placeholder="Fortæl os om din bil og dit foretrukne tidspunkt for service"
                     ></textarea>
                   </div>
                   
                   <button type="submit" className="w-full btn-secondary">
-                    Book Now
+                    Book Nu
                   </button>
                 </form>
               )}
@@ -182,7 +182,7 @@ const Contact = () => {
               glowIntensity="light"
               className="p-8"
             >
-              <h3 className="text-2xl font-bold mb-6">How It Works</h3>
+              <h3 className="text-2xl font-bold mb-6">Sådan Fungerer Det</h3>
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="w-10 h-10 rounded-full bg-green flex items-center justify-center flex-shrink-0">
@@ -190,7 +190,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1 text-lg">Book</h4>
-                    <p className="text-blue-100">Schedule your wash through our form or mobile app.</p>
+                    <p className="text-blue-100">Planlæg din vask gennem vores formular eller mobilapp.</p>
                   </div>
                 </div>
                 
@@ -199,8 +199,8 @@ const Contact = () => {
                     <span className="font-bold">2</span>
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1 text-lg">We Come to You</h4>
-                    <p className="text-blue-100">Our mobile team arrives at your location with all equipment.</p>
+                    <h4 className="font-bold mb-1 text-lg">Vi Kommer Til Dig</h4>
+                    <p className="text-blue-100">Vores mobile team ankommer til din lokation med alt udstyr.</p>
                   </div>
                 </div>
                 
@@ -209,8 +209,8 @@ const Contact = () => {
                     <span className="font-bold">3</span>
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1 text-lg">Enjoy</h4>
-                    <p className="text-blue-100">Sit back while we transform your car to a spotless finish.</p>
+                    <h4 className="font-bold mb-1 text-lg">Nyd</h4>
+                    <p className="text-blue-100">Læn dig tilbage, mens vi forvandler din bil til en pletfri finish.</p>
                   </div>
                 </div>
               </div>
@@ -222,7 +222,7 @@ const Contact = () => {
                       <span className="text-xl">📞</span>
                     </div>
                     <div>
-                      <p className="text-blue-100 text-sm">Need immediate assistance?</p>
+                      <p className="text-blue-100 text-sm">Brug for øjeblikkelig hjælp?</p>
                       <a href="tel:+1234567890" className="text-lg font-bold text-white hover:underline">
                         (123) 456-7890
                       </a>

@@ -7,30 +7,30 @@ const Footer = () => {
   
   const footerSections = [
     {
-      title: "Company",
+      title: "Virksomhed",
       links: [
-        { name: "About", href: "#about" },
-        { name: "Careers", href: "#careers" },
-        { name: "Press", href: "#press" },
+        { name: "Om os", href: "#about" },
+        { name: "Karriere", href: "#careers" },
+        { name: "Presse", href: "#press" },
         { name: "Blog", href: "#blog" },
       ]
     },
     {
       title: "Services",
       links: [
-        { name: "Express Wash", href: "#services" },
-        { name: "Premium Wash", href: "#services" },
-        { name: "Deluxe Detail", href: "#services" },
-        { name: "Commercial", href: "#commercial" },
+        { name: "Ekspres Vask", href: "#services" },
+        { name: "Premium Vask", href: "#services" },
+        { name: "Deluxe Detalje", href: "#services" },
+        { name: "Erhverv", href: "#commercial" },
       ]
     },
     {
       title: "Support",
       links: [
-        { name: "Help Center", href: "#help" },
-        { name: "Contact Us", href: "#contact" },
-        { name: "Privacy Policy", href: "#privacy" },
-        { name: "Terms of Service", href: "#terms" },
+        { name: "Hjælpecenter", href: "#help" },
+        { name: "Kontakt Os", href: "#contact" },
+        { name: "Privatlivspolitik", href: "#privacy" },
+        { name: "Vilkår for service", href: "#terms" },
       ]
     },
   ];
@@ -51,7 +51,7 @@ const Footer = () => {
             </GlassText>
             <GlassText opacity={0.05} blur="5px" className="mb-4">
               <p className="text-gray-400 mb-4 max-w-xs">
-                Professional mobile car washing service that brings the highest quality clean to your doorstep.
+                Professionel mobil bilvaskservice, der bringer den højeste kvalitetsrengøring til din dør.
               </p>
             </GlassText>
             <div className="flex space-x-4">
@@ -60,7 +60,7 @@ const Footer = () => {
                   key={social}
                   href={`#${social}`} 
                   className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue transition-colors duration-300 backdrop-blur-sm shadow-lg hover:shadow-blue/30"
-                  aria-label={`Follow us on ${social}`}
+                  aria-label={`Følg os på ${social}`}
                 >
                   <span className="text-lg">{social === "facebook" ? "f" : social[0]}</span>
                 </a>
@@ -92,12 +92,12 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <GlassText opacity={0.05} blur="5px" className="mb-4 md:mb-0">
             <p className="text-gray-400 text-sm">
-              &copy; {currentYear} SparkleWash. All rights reserved.
+              &copy; {currentYear} SparkleWash. Alle rettigheder forbeholdes.
             </p>
           </GlassText>
           <div className="flex space-x-4">
-            <a href="#privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Privacy</a>
-            <a href="#terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Terms</a>
+            <a href="#privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Privatliv</a>
+            <a href="#terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Vilkår</a>
             <a href="#cookies" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Cookies</a>
           </div>
         </div>
