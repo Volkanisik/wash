@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronDown } from 'lucide-react';
@@ -68,7 +69,11 @@ const Hero = () => {
           
           <div className={cn("mt-8 flex items-center gap-4 opacity-0 transform translate-y-8", isVisible && "animate-fade-in opacity-100 translate-y-0 transition-all duration-1000 delay-600")} ref={el => elementsRef.current[3] = el}>
             <div className="flex -space-x-2">
-              {[1, 2, 3].map(i => {})}
+              {[1, 2, 3].map(i => (
+                <div key={i} className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-600">
+                  {i}
+                </div>
+              ))}
             </div>
             
           </div>
