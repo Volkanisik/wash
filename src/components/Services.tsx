@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { FloatingElement, GlassPanel } from '@/components/ui/animations';
@@ -76,7 +75,7 @@ const Services = () => {
                 opacity={0.05} 
                 blur="10px" 
                 glowColor={service.glowColor}
-                glowIntensity={activeCard === index ? "high" : "low"}
+                glowIntensity={activeCard === index ? "strong" : "light"}
                 className={cn(
                   "h-full p-6 transition-all duration-300",
                   activeCard === index ? "scale-105" : ""

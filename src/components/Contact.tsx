@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { FloatingElement, GlassPanel } from '@/components/ui/animations';
@@ -7,7 +6,7 @@ import { toast } from '@/hooks/use-toast';
 import { Check, Loader2 } from 'lucide-react';
 
 // EmailJS configuration constants
-const EMAILJS_SERVICE_ID = 'service_mail';  // Replace with your EmailJS service ID
+const EMAILJS_SERVICE_ID = 'service_x8eo1vk';  // Updated with the user's service ID
 const EMAILJS_TEMPLATE_ID = 'template_mail'; // Replace with your EmailJS template ID
 const EMAILJS_PUBLIC_KEY = 'public_key'; // Replace with your EmailJS public key
 
