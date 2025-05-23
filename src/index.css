@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -73,6 +72,83 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-blue/40 rounded-full hover:bg-blue/70 transition-colors duration-300;
   }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(-2deg); }
+  75% { transform: translateY(5px) rotate(2deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px 5px rgba(255,255,255,0.2); }
+  50% { box-shadow: 0 0 25px 10px rgba(255,255,255,0.4); }
+}
+
+@keyframes foam {
+  0% { 
+    transform: translateY(0) scale(0.8);
+    opacity: 0.5;
+  }
+  50% { 
+    transform: translateY(-20px) scale(1);
+    opacity: 0.7;
+  }
+  100% { 
+    transform: translateY(-40px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes dropFall {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(2000%); opacity: 0; }
+}
+
+@keyframes splash {
+  0% { height: 0; opacity: 0; }
+  20% { height: 100%; opacity: 1; }
+  100% { height: 150%; opacity: 0; }
+}
+
+@keyframes ripple {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  70% { opacity: 0.3; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+@keyframes carWash {
+  0% { transform: translateX(-100%) rotate(0); }
+  100% { transform: translateX(300%) rotate(5deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
 }
 
 @layer components {
@@ -165,77 +241,10 @@
     transform: translate(-50%, -50%) scale(0);
     animation: ripple 6s infinite;
   }
-}
-
-/* Expanded keyframes for more animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse-soft {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.8; }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes rotate-slow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes wave {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-5px) rotate(-2deg); }
-  75% { transform: translateY(5px) rotate(2deg); }
-}
-
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 10px 5px rgba(255,255,255,0.2); }
-  50% { box-shadow: 0 0 25px 10px rgba(255,255,255,0.4); }
-}
-
-@keyframes foam {
-  0% { 
-    transform: translateY(0) scale(0.8);
-    opacity: 0.5;
+  
+  .animate-shake {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   }
-  50% { 
-    transform: translateY(-20px) scale(1);
-    opacity: 0.7;
-  }
-  100% { 
-    transform: translateY(-40px) scale(0.8);
-    opacity: 0;
-  }
-}
-
-@keyframes dropFall {
-  0% { transform: translateY(-100%); opacity: 0; }
-  10% { opacity: 0.7; }
-  90% { opacity: 0.7; }
-  100% { transform: translateY(2000%); opacity: 0; }
-}
-
-@keyframes splash {
-  0% { height: 0; opacity: 0; }
-  20% { height: 100%; opacity: 1; }
-  100% { height: 150%; opacity: 0; }
-}
-
-@keyframes ripple {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-  70% { opacity: 0.3; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
-}
-
-@keyframes carWash {
-  0% { transform: translateX(-100%) rotate(0); }
-  100% { transform: translateX(300%) rotate(5deg); }
 }
 
 /* Add additional animation classes */
