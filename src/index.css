@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -145,6 +146,25 @@
   .glow-pulse {
     animation: glow-pulse 3s infinite;
   }
+  
+  /* Water animations */
+  .water-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .water-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 6s infinite;
+  }
 }
 
 /* Expanded keyframes for more animations */
@@ -194,6 +214,30 @@
   }
 }
 
+@keyframes dropFall {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(2000%); opacity: 0; }
+}
+
+@keyframes splash {
+  0% { height: 0; opacity: 0; }
+  20% { height: 100%; opacity: 1; }
+  100% { height: 150%; opacity: 0; }
+}
+
+@keyframes ripple {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  70% { opacity: 0.3; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+@keyframes carWash {
+  0% { transform: translateX(-100%) rotate(0); }
+  100% { transform: translateX(300%) rotate(5deg); }
+}
+
 /* Add additional animation classes */
 .animate-float {
   animation: float 6s ease-in-out infinite;
@@ -219,6 +263,22 @@
 
 .animate-foam {
   animation: foam 4s ease-in-out infinite;
+}
+
+.animate-dropfall {
+  animation: dropFall 5s linear infinite;
+}
+
+.animate-splash {
+  animation: splash 1s ease-out forwards;
+}
+
+.animate-ripple {
+  animation: ripple 4s ease-out infinite;
+}
+
+.animate-car-wash {
+  animation: carWash 15s linear infinite;
 }
 
 /* Micro-interaction for buttons and links */

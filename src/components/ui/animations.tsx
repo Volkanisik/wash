@@ -1,3 +1,4 @@
+
 import React, { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -156,7 +157,7 @@ export const GlassPanel = forwardRef<HTMLDivElement, GlassPanelProps>(({
 // Add display name for debugging purposes
 GlassPanel.displayName = 'GlassPanel';
 
-// New component for glass text background
+// Glass text background
 interface GlassTextProps extends React.HTMLAttributes<HTMLDivElement> {
   opacity?: number;
   blur?: string;
@@ -195,10 +196,170 @@ export const GlassText = forwardRef<HTMLDivElement, GlassTextProps>(({
 
 GlassText.displayName = 'GlassText';
 
+// New Water Droplet component
+interface WaterDropProps extends React.HTMLAttributes<HTMLDivElement> {
+  size?: 'sm' | 'md' | 'lg';
+  color?: string;
+  duration?: number;
+}
+
+export const WaterDrop = ({
+  size = 'md',
+  color = 'rgba(59, 130, 246, 0.3)', // Default blue
+  duration = 4,
+  className,
+  ...props
+}: WaterDropProps) => {
+  const dropSizes = {
+    sm: 'w-1 h-4',
+    md: 'w-1.5 h-6',
+    lg: 'w-2 h-8',
+  };
+  
+  return (
+    <div
+      className={cn(
+        dropSizes[size],
+        'rounded-b-full bg-gradient-to-b from-transparent via-current to-current',
+        className
+      )}
+      style={{
+        color,
+        animation: `dropFall ${duration}s linear infinite`,
+      }}
+      {...props}
+    >
+      <style>
+        {`@keyframes dropFall {
+          0% { transform: translateY(-100vh); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateY(100vh); opacity: 0; }
+        }`}
+      </style>
+    </div>
+  );
+};
+
+// New Splash effect component
+interface SplashProps extends React.HTMLAttributes<HTMLDivElement> {
+  color?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export const Splash = ({
+  color = 'rgba(59, 130, 246, 0.4)',
+  size = 'md',
+  className,
+  ...props
+}: SplashProps) => {
+  const splashSizes = {
+    sm: 'w-8 h-8',
+    md: 'w-12 h-12',
+    lg: 'w-16 h-16',
+  };
+  
+  return (
+    <div
+      className={cn(
+        splashSizes[size],
+        'relative',
+        className
+      )}
+      {...props}
+    >
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute top-1/2 left-1/2 w-1 h-4 origin-bottom rounded-t-full"
+          style={{
+            backgroundColor: color,
+            transform: `rotate(${i * 60}deg) translateX(-50%)`,
+            animation: 'splash 1.5s ease-out forwards',
+          }}
+        />
+      ))}
+      <style>
+        {`@keyframes splash {
+          0% { height: 0; opacity: 0; }
+          50% { height: 100%; opacity: 0.8; }
+          100% { height: 0; opacity: 0; }
+        }`}
+      </style>
+    </div>
+  );
+};
+
+// New component for a car silhouette
+interface CarSilhouetteProps extends React.HTMLAttributes<HTMLDivElement> {
+  color?: string;
+  width?: string;
+}
+
+export const CarSilhouette = ({
+  color = 'rgba(59, 130, 246, 0.15)',
+  width = '200px',
+  className,
+  ...props
+}: CarSilhouetteProps) => {
+  return (
+    <div
+      className={cn('relative', className)}
+      {...props}
+    >
+      <div 
+        style={{
+          width,
+          height: `calc(${width} * 0.6)`,
+          backgroundColor: color,
+          borderRadius: `${parseInt(width) * 0.15}px / ${parseInt(width) * 0.15}px`,
+          position: 'relative',
+        }}
+      >
+        <div 
+          style={{
+            position: 'absolute',
+            width: `calc(${width} * 0.7)`,
+            height: `calc(${width} * 0.25)`,
+            backgroundColor: color,
+            borderRadius: `${parseInt(width) * 0.1}px ${parseInt(width) * 0.1}px 0 0`,
+            top: `calc(${width} * -0.15)`,
+            left: `calc(${width} * 0.15)`,
+          }}
+        />
+        <div 
+          style={{
+            position: 'absolute',
+            width: `calc(${width} * 0.2)`,
+            height: `calc(${width} * 0.2)`,
+            backgroundColor: 'rgba(0,0,0,0.05)',
+            borderRadius: '50%',
+            bottom: `calc(${width} * 0.05)`,
+            left: `calc(${width} * 0.15)`,
+          }}
+        />
+        <div 
+          style={{
+            position: 'absolute',
+            width: `calc(${width} * 0.2)`,
+            height: `calc(${width} * 0.2)`,
+            backgroundColor: 'rgba(0,0,0,0.05)',
+            borderRadius: '50%',
+            bottom: `calc(${width} * 0.05)`,
+            right: `calc(${width} * 0.15)`,
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
 export default {
   FoamBubbles,
   FloatingElement,
   ProgressiveBlur,
   GlassPanel,
-  GlassText
+  GlassText,
+  WaterDrop,
+  Splash,
+  CarSilhouette
 };

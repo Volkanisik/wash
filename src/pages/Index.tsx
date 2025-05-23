@@ -7,12 +7,27 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { FloatingElement, FoamBubbles, GlassPanel, ProgressiveBlur } from "@/components/ui/animations";
+import { FloatingElement, FoamBubbles, GlassPanel, ProgressiveBlur, WaterDrop, CarSilhouette } from "@/components/ui/animations";
 import { ArrowUp } from "lucide-react";
 
 const Index = () => {
   const scrollButtonRef = useRef<HTMLDivElement>(null);
   const [visibleSection, setVisibleSection] = useState('');
+  const [waterDrops, setWaterDrops] = useState<{id: number, left: string, delay: number, size: 'sm' | 'md' | 'lg', duration: number}[]>([]);
+
+  // Initialize water drops animation
+  useEffect(() => {
+    // Create random water drops
+    const drops = Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      delay: Math.random() * 5,
+      size: ['sm', 'md', 'lg'][Math.floor(Math.random() * 3)] as 'sm' | 'md' | 'lg',
+      duration: 3 + Math.random() * 4
+    }));
+    
+    setWaterDrops(drops);
+  }, []);
 
   // Initialize intersection observer for animations
   useEffect(() => {
@@ -88,6 +103,42 @@ const Index = () => {
 
   return (
     <div className="min-h-screen overflow-hidden bg-gradient-to-b from-white to-blue-50/30">
+      {/* Water drop animations - fixed in the background */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30" 
+        aria-hidden="true"
+      >
+        {/* Water drops falling */}
+        {waterDrops.map(drop => (
+          <WaterDrop
+            key={drop.id}
+            size={drop.size}
+            className="absolute top-0"
+            style={{
+              left: drop.left,
+              animationDelay: `${drop.delay}s`,
+              animationDuration: `${drop.duration}s`
+            }}
+            color={drop.size === 'lg' ? 'rgba(59, 130, 246, 0.4)' : 
+                   drop.size === 'md' ? 'rgba(74, 222, 128, 0.4)' : 
+                   'rgba(255, 255, 255, 0.6)'}
+          />
+        ))}
+        
+        {/* Car silhouettes floating in background */}
+        <div className="absolute top-[35%] left-[5%] opacity-10">
+          <FloatingElement duration={20} distance="15px">
+            <CarSilhouette width="120px" />
+          </FloatingElement>
+        </div>
+        
+        <div className="absolute top-[65%] right-[8%] opacity-10">
+          <FloatingElement duration={25} distance="20px" delay={2}>
+            <CarSilhouette width="150px" />
+          </FloatingElement>
+        </div>
+      </div>
+      
       {/* Decorative background elements with parallax effect */}
       <div 
         className="fixed top-0 left-0 w-full h-full pointer-events-none z-0" 
