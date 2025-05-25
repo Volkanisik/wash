@@ -7,8 +7,8 @@ import { Check, Loader2 } from 'lucide-react';
 
 // EmailJS configuration constants
 const EMAILJS_SERVICE_ID = 'service_x8eo1vk';  // Updated with the user's service ID
-const EMAILJS_TEMPLATE_ID = 'template_mail'; // Replace with your EmailJS template ID
-const EMAILJS_PUBLIC_KEY = 'public_key'; // Replace with your EmailJS public key
+const EMAILJS_TEMPLATE_ID = 'template_4wlqy2s'; // Updated with the user's template ID
+const EMAILJS_PUBLIC_KEY = 'cvmL39cnfHLFUikTD'; // Updated with the user's public key
 
 const Contact = () => {
   const [formState, setFormState] = useState({
