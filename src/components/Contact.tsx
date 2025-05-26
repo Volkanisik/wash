@@ -105,8 +105,16 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    console.log('Form submission started');
+    console.log('EmailJS Config:', {
+      serviceId: EMAILJS_SERVICE_ID,
+      templateId: EMAILJS_TEMPLATE_ID,
+      publicKey: EMAILJS_PUBLIC_KEY ? 'Present' : 'Missing'
+    });
+    
     // Validate form
     if (!validateForm()) {
+      console.log('Form validation failed', errors);
       // Shake the form slightly to indicate error
       if (formRef.current) {
         formRef.current.classList.add('animate-shake');
@@ -130,6 +138,7 @@ const Contact = () => {
       // Generate a booking reference
       const reference = generateBookingReference();
       setBookingReference(reference);
+      console.log('Generated booking reference:', reference);
       
       // Store in localStorage as backup
       const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
@@ -142,6 +151,7 @@ const Contact = () => {
       
       bookings.push(newBooking);
       localStorage.setItem('bookings', JSON.stringify(bookings));
+      console.log('Booking saved to localStorage');
       
       // Format date for better display
       const today = new Date();
@@ -158,12 +168,16 @@ const Contact = () => {
         booking_date: formattedDate
       };
       
-      await emailjs.send(
+      console.log('Sending email with params:', templateParams);
+      
+      const response = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         templateParams,
         EMAILJS_PUBLIC_KEY
       );
+      
+      console.log('EmailJS response:', response);
       
       // Show success message
       setSubmitted(true);
@@ -184,11 +198,45 @@ const Contact = () => {
       
     } catch (error) {
       console.error('Booking submission error:', error);
+      console.error('Error details:', JSON.stringify(error, null, 2));
+      
+      // More specific error messages
+      let errorMessage = "Vi kunne ikke modtage din booking. Prøv igen senere eller ring til os.";
+      
+      if (error instanceof Error) {
+        if (error.message.includes('network')) {
+          errorMessage = "Netværksfejl. Tjek din internetforbindelse og prøv igen.";
+        } else if (error.message.includes('403') || error.message.includes('401')) {
+          errorMessage = "Autoriseringsfejl. Kontakt os direkte på telefon.";
+        } else if (error.message.includes('400')) {
+          errorMessage = "Der er et problem med formularen. Kontakt os direkte.";
+        }
+      }
+      
       toast({
         title: "Der opstod en fejl",
-        description: "Vi kunne ikke modtage din booking. Prøv igen senere eller ring til os.",
+        description: errorMessage,
         variant: "destructive"
       });
+      
+      // Still save to localStorage as backup
+      try {
+        const reference = generateBookingReference();
+        setBookingReference(reference);
+        const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+        const newBooking = { 
+          ...formState, 
+          reference, 
+          date: new Date().toISOString(),
+          status: 'failed',
+          error: error instanceof Error ? error.message : 'Unknown error'
+        };
+        bookings.push(newBooking);
+        localStorage.setItem('bookings', JSON.stringify(bookings));
+        console.log('Failed booking saved to localStorage for recovery');
+      } catch (localStorageError) {
+        console.error('Could not save to localStorage:', localStorageError);
+      }
     } finally {
       setIsLoading(false);
     }

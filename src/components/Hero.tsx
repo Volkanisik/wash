@@ -132,9 +132,9 @@ const Hero = () => {
           <div className={cn("mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 opacity-0 transform translate-y-8", isVisible && "animate-fade-in opacity-100 translate-y-0 transition-all duration-1000 delay-600")} ref={el => elementsRef.current[3] = el}>
             <GlassPanel glowColor="rgba(74, 222, 128, 0.3)" glowIntensity="medium" className="p-4">
               <div className="flex items-center gap-3">
-                <div className="text-green font-bold text-lg">15 min</div>
+                <div className="text-green font-bold text-lg">30 min - 2 timer</div>
                 <div className="h-6 w-px bg-gray-300"></div>
-                <p className="text-sm text-gray-600">Gennemsnitlig ventetid</p>
+                <p className="text-sm text-gray-600">Behandlingstid</p>
               </div>
             </GlassPanel>
             
