@@ -1,9 +1,6 @@
-
 import { GlassPanel, FloatingElement } from '@/components/ui/animations';
-
 const HowItWorks = () => {
-  return (
-    <GlassPanel opacity={0.1} blur="10px" glowColor="rgba(74, 222, 128, 0.15)" glowIntensity="light" className="p-8">
+  return <GlassPanel opacity={0.1} blur="10px" glowColor="rgba(74, 222, 128, 0.15)" glowIntensity="light" className="p-8">
       <h3 className="text-2xl font-bold mb-6">Sådan Fungerer Det</h3>
       <div className="space-y-6">
         <div className="flex gap-4">
@@ -44,14 +41,12 @@ const HowItWorks = () => {
               <span className="text-xl">📞</span>
             </div>
             <div>
-              <p className="text-blue-100 text-sm">Brug for øjeblikkelig hjælp?</p>
+              <p className="text-blue-150 text-sm">Brug for øjeblikkelig hjælp?</p>
               <a href="tel:+1234567890" className="text-lg font-bold text-white hover:underline">40 32 04 18</a>
             </div>
           </div>
         </div>
       </FloatingElement>
-    </GlassPanel>
-  );
+    </GlassPanel>;
 };
-
 export default HowItWorks;
