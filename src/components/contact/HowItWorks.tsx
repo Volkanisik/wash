@@ -41,7 +41,7 @@ const HowItWorks = () => {
               <span className="text-xl">📞</span>
             </div>
             <div>
-              <p className="text-blue-150 text-sm">Brug for øjeblikkelig hjælp?</p>
+              <p className="text-blue-150 font-extrabold text-xl text-left">Brug for øjeblikkelig hjælp?</p>
               <a href="tel:+1234567890" className="text-lg font-bold text-white hover:underline">40 32 04 18</a>
             </div>
           </div>
